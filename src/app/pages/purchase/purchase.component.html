@@ -1,0 +1,72 @@
+<div class="min-h-screen flex flex-col items-center p-8">
+  <div class="max-w-4xl w-full bg-white shadow-lg rounded-lg p-6">
+    <h1 class="text-3xl font-bold text-center mb-6">Complete Your Purchase</h1>
+    
+    <!-- Order Summary -->
+    <div class="bg-gray-50 p-4 rounded-lg mb-6">
+      <h2 class="text-2xl font-semibold mb-4">Order Summary</h2>
+      <ul class="list-disc pl-5">
+        <li *ngFor="let item of cartItems" class="mb-2">
+          {{ item.name }} - ₨ {{ item.price }} x {{ item.quantity }}
+        </li>
+        <li class="mb-2 font-bold">Shipping: ₨ 100</li> <!-- Example static shipping cost -->
+        <li class="mb-2 font-bold">Total: ₨ {{ totalPrice + 100 }}</li> <!-- Adjusted total price -->
+      </ul>
+    </div>
+     
+    <!-- Payment Options -->
+    <div class="mb-6">
+      <h2 class="text-2xl font-semibold mb-4">Select Payment Method</h2>
+      
+      <!-- Payment Buttons -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <button
+          [ngClass]="{'bg-blue-700': selectedPaymentMethod === 'easypaisa', 'bg-blue-600': selectedPaymentMethod !== 'easypaisa'}"
+          (click)="selectPaymentMethod('easypaisa')"
+          class="flex items-center justify-between px-4 py-3 text-white font-bold rounded-lg hover:bg-blue-700 transition-colors duration-300">
+          Easypaisa
+          <img src="assets/Easypaisa.webp" alt="Easypaisa" class="h-8">
+        </button>
+        
+        <button
+          [ngClass]="{'bg-green-700': selectedPaymentMethod === 'jazzcash', 'bg-green-600': selectedPaymentMethod !== 'jazzcash'}"
+          (click)="selectPaymentMethod('jazzcash')"
+          class="flex items-center justify-between px-4 py-3 text-white font-bold rounded-lg hover:bg-green-700 transition-colors duration-300">
+          JazzCash
+          <img src="assets/jazzcash" alt="JazzCash" class="h-8">
+        </button>
+        
+        <button
+          [ngClass]="{'bg-gray-900': selectedPaymentMethod === 'creditcard', 'bg-gray-800': selectedPaymentMethod !== 'creditcard'}"
+          (click)="selectPaymentMethod('creditcard')"
+          class="flex items-center justify-between px-4 py-3 text-white font-bold rounded-lg hover:bg-gray-900 transition-colors duration-300">
+          Credit Card
+          <img src="assets/creditcard" alt="Credit Card" class="h-8">
+        </button>
+        
+        <button
+          [ngClass]="{'bg-blue-600': selectedPaymentMethod === 'paypal', 'bg-blue-500': selectedPaymentMethod !== 'paypal'}"
+          (click)="selectPaymentMethod('paypal')"
+          class="flex items-center justify-between px-4 py-3 text-white font-bold rounded-lg hover:bg-blue-600 transition-colors duration-300">
+          PayPal
+          <img src="assets/paypal" alt="PayPal" class="h-8">
+        </button>
+      </div>
+    </div>
+    
+    <!-- Confirmation Button -->
+    <div class="text-center mb-6">
+      <button
+        (click)="confirmPurchase()"
+        class="px-6 py-3 bg-teal-600 text-white font-bold rounded-lg hover:bg-teal-700 transition-colors duration-300">
+        Confirm Purchase
+      </button>
+    </div>
+    
+    <!-- Success Message -->
+    <div *ngIf="paymentSuccessful" class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative" role="alert">
+      <strong class="font-bold">Success!</strong>
+      <span class="block sm:inline">Payment Successful.</span>
+    </div>
+  </div>
+</div>

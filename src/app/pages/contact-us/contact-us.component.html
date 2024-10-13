@@ -1,0 +1,67 @@
+<div class="max-w-7xl mx-auto p-8 mt-10">
+  <div class="text-center mb-12">
+    <h1 class="text-4xl font-bold text-gray-800">Contact our team</h1>
+    <p class="text-lg text-gray-600 mt-4">
+      Got any questions about the product or scaling on our platform? We're here to help.
+      Chat to our friendly team 24/7 and get onboard in less than 5 minutes.
+    </p>
+  </div>
+
+  <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+   
+    <div>
+      <form (ngSubmit)="sendMessage()" #contactForm="ngForm" class="space-y-6">
+        <div class="flex space-x-4">
+          <div class="w-1/2">
+            <label for="first-name" class="block text-sm font-medium text-gray-700">First name</label>
+            <input type="text" id="first-name" ngModel name="firstName" class="mt-1 p-3 block w-full border border-gray-300 rounded-md shadow-sm focus:outline-none focus:border-indigo-500" placeholder="First name">
+          </div>
+          <div class="w-1/2">
+            <label for="last-name" class="block text-sm font-medium text-gray-700">Last name</label>
+            <input type="text" id="last-name" ngModel name="lastName" class="mt-1 p-3 block w-full border border-gray-300 rounded-md shadow-sm focus:outline-none focus:border-indigo-500" placeholder="Last name">
+          </div>
+        </div>
+        <div>
+          <label for="email" class="block text-sm font-medium text-gray-700">Email</label>
+          <input type="email" id="email" ngModel name="email" class="mt-1 p-3 block w-full border border-gray-300 rounded-md shadow-sm focus:outline-none focus:border-indigo-500" placeholder="you@company.com">
+        </div>
+        <div>
+          <label for="phone-number" class="block text-sm font-medium text-gray-700">Phone number</label>
+          <input type="tel" id="phone-number" ngModel name="phoneNumber" class="mt-1 p-3 block w-full border border-gray-300 rounded-md shadow-sm focus:outline-none focus:border-indigo-500" placeholder="+92 (555) 000-0000">
+        </div>
+        <div>
+          <label for="message" class="block text-sm font-medium text-gray-700">Message</label>
+          <textarea id="message" ngModel name="message" rows="4" class="mt-1 p-3 block w-full border border-gray-300 rounded-md shadow-sm focus:outline-none focus:border-indigo-500" placeholder="Leave us a message..."></textarea>
+        </div>
+        <div>
+          <button type="submit" class="w-full p-3 bg-indigo-600 text-white rounded-md shadow-sm hover:bg-indigo-700 focus:outline-none">Send message</button>
+        </div>
+      </form>
+    </div>
+
+    
+    <div class="space-y-12">
+      <div class="space-y-4">
+        <h2 class="text-xl font-semibold text-gray-800">Chat with us</h2>
+        <p class="text-sm text-gray-600">Speak to our friendly team via live chat.</p>
+        <ul class="space-y-2">
+          <li><a href="#" class="text-indigo-600 hover:underline">Start a live chat</a></li>
+          <li><a href="#" class="text-indigo-600 hover:underline">Shoot us an email</a></li>
+          <li><a href="#" class="text-indigo-600 hover:underline">Message us on X</a></li>
+        </ul>
+      </div>
+
+      <div class="space-y-4">
+        <h2 class="text-xl font-semibold text-gray-800">Call us</h2>
+        <p class="text-sm text-gray-600">Call our team Mon-Fri from 8am to 5pm.</p>
+        <a href="tel:+15550000000" class="text-indigo-600 hover:underline">+92 (555) 000-0000</a>
+      </div>
+
+      <div class="space-y-4">
+        <h2 class="text-xl font-semibold text-gray-800">Visit us</h2>
+        <p class="text-sm text-gray-600">Chat to us in person at our Melbourne HQ.</p>
+        <a href="#" class="text-indigo-600 hover:underline">Street No 2,Allama Iqbal Town Lahore</a>
+      </div>
+    </div>
+  </div>
+</div>

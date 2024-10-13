@@ -1,0 +1,78 @@
+<div class="add-to-cart border !border-gray-300 p-8 min-h-screen">
+  <div class="max-w-6xl mx-auto">
+    <h2 class="text-3xl font-bold text-gray-800 mb-6 flex items-center">
+      <span class="material-symbols-outlined mr-3 text-3xl">
+        shopping_cart
+      </span>
+      My Cart
+    </h2>
+    
+    <div *ngIf="cartItems.length === 0" class="text-center text-gray-500 text-lg">
+      Your cart is empty.
+    </div>
+
+    <div *ngIf="cartItems.length > 0" class="bg-white shadow-md rounded-lg p-6">
+      <div class="flex flex-col lg:flex-row gap-4">
+        <div class="w-full lg:w-8/12">
+          <div *ngFor="let item of cartItems; let i = index" class="border-b border-gray-300 py-4 flex items-center justify-between">
+            <div class="flex items-center">
+              <img [src]="'assets/' + item.image" alt="{{ item.name }}" class="w-20 h-20 rounded-lg shadow-md object-cover mr-4">
+              <div>
+                <p class="text-lg font-semibold text-gray-700">{{ item.name }}</p>
+                <p class="text-gray-500">Color: {{ item.color }}</p>
+                <p class="text-gray-500">Size: {{ item.size }}</p>
+                <p class="text-gray-500">₹{{ item.price }}</p>
+              </div>
+            </div>
+            <div class="flex items-center gap-4">
+              <select [(ngModel)]="item.quantity" (ngModelChange)="onQuantityChange()" class="form-select w-20 p-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring focus:border-blue-300">
+                <option *ngFor="let qty of [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]" [value]="qty">{{ qty }}</option>
+              </select>
+              <button (click)="removeFromCart(i)" class="text-red-500 hover:text-red-600 text-sm font-medium">
+                Remove
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="w-full lg:w-4/12 bg-gray-100 p-4 rounded-lg shadow-md">
+          <h3 class="text-xl font-semibold text-gray-800 mb-4">Order Summary</h3>
+
+          <div class="flex justify-between text-gray-600 mb-2">
+            <p>Items</p>
+            <p>{{ cartItems.length }}</p>
+          </div>
+
+          <div class="flex justify-between text-gray-600 mb-2">
+            <p>Subtotal</p>
+            <p>₹{{ total }}</p>
+          </div>
+
+          <div class="flex justify-between text-gray-600 mb-2">
+            <p>Shipping cost</p>
+            <p>TBD</p>
+          </div>
+
+          <div class="flex justify-between text-gray-600 mb-4">
+            <p>Tax</p>
+            <p>TBD</p>
+          </div>
+
+          <div class="flex justify-between text-lg font-bold text-gray-800 mb-4">
+            <p>Estimated Total</p>
+            <p>₹{{ total }}</p>
+          </div>
+
+          <button (click)="checkout()" class="bg-yellow-500 text-white text-lg font-semibold w-full py-2 rounded-lg hover:bg-yellow-600 mb-4">
+            Checkout
+          </button>
+          
+          <!-- New Purchase Button -->
+          <button (click)="goToPurchasePage()" class="bg-green-500 text-white text-lg font-semibold w-full py-2 rounded-lg hover:bg-green-600">
+            Purchase
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

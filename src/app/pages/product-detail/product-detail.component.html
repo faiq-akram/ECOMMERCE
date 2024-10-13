@@ -1,0 +1,37 @@
+<div class="flex justify-center items-center min-h-screen  !border-gray-300 p-6">
+  <div class="bg-white shadow-lg rounded-lg overflow-hidden max-w-4xl w-full">
+    <div class="flex">
+     
+      <div class="w-1/2">
+        <img [src]="(product?.imageUrl || '/assets/default-image.webp')" alt="{{ product?.productName }}" class="w-full h-full object-cover object-center">
+      </div>
+
+     
+      <div class="w-1/2 p-8">
+        <h2 class="text-3xl font-bold text-gray-800 mb-4">{{ product?.productName }}</h2>
+
+        <p class="text-gray-600 mb-4">
+          {{ product?.description || 'Discover the excellence of our product. Designed to offer superior performance and unmatched durability.' }}
+        </p>
+
+        <p class="text-lg font-semibold text-gray-900 mb-6">Price: ₹{{ product?.price }}</p>
+
+        <label for="size" class="block text-gray-700 text-sm font-bold mb-2">Size</label>
+        <select id="size" name="size" class="mb-6 block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded leading-tight focus:outline-none focus:shadow-outline">
+          <option>Small</option>
+          <option>Medium</option>
+          <option>Large</option>
+        </select>
+
+        <div class="flex justify-between">
+          <button (click)="addToCart()" class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded">
+            Add to Cart
+          </button>
+          <button (click)="purchase()" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded">
+            Purchase
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
